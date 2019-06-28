@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TO DO リスト</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="addText" placeholder="ToDoを入力">
+        <button v-on:click="addToDo()">追加</button><hr>
+
+        <ul v-for="(todo,index) in list">
+            <li>{{ index + 1 }}:{{ todo.text }}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                addText: '',
+                list:[]
+            },
+            methods: {
+                addToDo() {
+                    if (this.addText) {
+                        this.list.push({
+                            text: this.addText
+                        });
+                    }
+                    this.addText = '';
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,10 @@
+body{background-color:skyblue;}
+body h1{
+    font-size: 32px;
+}
+body img{
+    font-size:1170px;
+}
+body img:hover{
+    opacity:0.1;
+}

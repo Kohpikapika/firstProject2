@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>My Map</title>
+    <style>
+        #target{
+            width: 550px;
+            height: 200px;
+        }
+    </style>
+   
+</head>
+<body>
+    <div id="target"></div>
+   
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyCm4C7STjKZjxU_OfwdCPB5y5nauMZfPvU &callback=initMap&libraries=places" async defer>
+    </script>
+    <script>
+        function initMap() {
+            'use strict';
+
+            var target = document.getElementById('target');
+            //Geolocation
+
+            if (!navigator.geolocation) {
+                alert('Geolocation not supported')
+                return;
+            }           
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                new google.maps.Map(target, {
+                    center: {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    },
+                    zoom: 15
+                });
+            }, function() {
+                alert('Geolocation failed');
+                return;
+            });
+        
+        }
+    </script>
+                
+</body>
+
+</html>
